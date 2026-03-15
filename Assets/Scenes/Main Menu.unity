@@ -984,7 +984,7 @@ MonoBehaviour:
   m_FillRect: {fileID: 2123494230}
   m_HandleRect: {fileID: 286327143}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0000001
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 0.5
@@ -1016,6 +1016,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoundManager
   volumeSlider: {fileID: 546314015}
+  mixer: {fileID: 24100000, guid: c1bcbe0598a02fd4aa36c1c9cccfc6a5, type: 2}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -1649,8 +1650,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -353.5469, y: 264.1}
-  m_SizeDelta: {x: 268.4848, y: 50.001}
+  m_AnchoredPosition: {x: -341.0962, y: 264.1}
+  m_SizeDelta: {x: 293.3862, y: 50.002}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1069193247
 MonoBehaviour:
@@ -1672,7 +1673,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Main Volume
+  m_text: 'Music Volume
 
 '
   m_isRightToLeft: 0
