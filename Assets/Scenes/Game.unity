@@ -1829,9 +1829,9 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 1, y: 0.75}
+    - - {x: 1.25, y: 0.75}
       - {x: 0, y: 0}
-      - {x: 1, y: -0.75}
+      - {x: 1.25, y: -0.75}
   m_UseDelaunayMesh: 1
 --- !u!1 &1699535192
 GameObject:
@@ -6951,6 +6951,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1832158483}
   m_CullTransparentMesh: 1
+--- !u!1 &1915610418
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1915610420}
+  - component: {fileID: 1915610419}
+  m_Layer: 0
+  m_Name: EnemySpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1915610419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1915610418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc5e21956e9773945a248738ebe26710, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
+  normalPrefab: {fileID: 3825215820145981112, guid: 5e6747104316dea499cf466ddacbcd6b, type: 3}
+  smallPrefab: {fileID: 5174599298030554305, guid: e4d147edeb9a1a441a276a47a32cd783, type: 3}
+  normalInterval: 5
+  smallInterval: 1
+--- !u!4 &1915610420
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1915610418}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.38625, y: -0.81331, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1995045866
 GameObject:
   m_ObjectHideFlags: 0
@@ -7140,10 +7188,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Small_Zombie
       objectReference: {fileID: 0}
-    - target: {fileID: 5174599298030554305, guid: e4d147edeb9a1a441a276a47a32cd783, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7160,10 +7204,6 @@ PrefabInstance:
     - target: {fileID: 3825215820145981112, guid: 5e6747104316dea499cf466ddacbcd6b, type: 3}
       propertyPath: m_Name
       value: Zombie
-      objectReference: {fileID: 0}
-    - target: {fileID: 3825215820145981112, guid: 5e6747104316dea499cf466ddacbcd6b, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6872144741851892422, guid: 5e6747104316dea499cf466ddacbcd6b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7225,3 +7265,4 @@ SceneRoots:
   - {fileID: 385420300}
   - {fileID: 1005430956}
   - {fileID: 1780400676}
+  - {fileID: 1915610420}

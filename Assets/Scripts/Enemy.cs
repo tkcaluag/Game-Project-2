@@ -8,9 +8,11 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float speed = 1.5f;
     [SerializeField] private EnemyData data;
     private GameObject player;
+    private Animator animator;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        animator = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player");
         SetEnemeyValues();
     }
@@ -23,7 +25,13 @@ public class Enemy : MonoBehaviour
 
     private void Swarm()
     {
-        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+        if(player != null){
+            animator.SetBool("isWalking", true);
+            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+        } else
+        {
+            animator.SetBool("isWalking", false);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collider)

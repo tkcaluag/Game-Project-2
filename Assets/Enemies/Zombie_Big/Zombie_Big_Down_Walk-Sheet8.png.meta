@@ -123,10 +123,10 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
+        width: 16
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -143,12 +143,12 @@ TextureImporter:
       name: Zombie_Big_Down_Walk-Sheet8_1
       rect:
         serializedVersion: 2
-        x: 31
+        x: 16
         y: 0
-        width: 17
+        width: 16
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -165,12 +165,12 @@ TextureImporter:
       name: Zombie_Big_Down_Walk-Sheet8_2
       rect:
         serializedVersion: 2
-        x: 47
+        x: 32
         y: 0
-        width: 17
+        width: 16
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -187,12 +187,12 @@ TextureImporter:
       name: Zombie_Big_Down_Walk-Sheet8_3
       rect:
         serializedVersion: 2
-        x: 63
+        x: 48
         y: 0
-        width: 17
+        width: 16
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -209,12 +209,12 @@ TextureImporter:
       name: Zombie_Big_Down_Walk-Sheet8_4
       rect:
         serializedVersion: 2
-        x: 79
+        x: 64
         y: 0
-        width: 17
+        width: 16
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -231,12 +231,12 @@ TextureImporter:
       name: Zombie_Big_Down_Walk-Sheet8_5
       rect:
         serializedVersion: 2
-        x: 95
+        x: 80
         y: 0
-        width: 17
+        width: 16
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -253,12 +253,12 @@ TextureImporter:
       name: Zombie_Big_Down_Walk-Sheet8_6
       rect:
         serializedVersion: 2
-        x: 111
+        x: 96
         y: 0
-        width: 17
+        width: 16
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -271,11 +271,33 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Zombie_Big_Down_Walk-Sheet8_7
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 0
+        width: 16
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b823857632e63834dad5463d3d34a38d
+      internalID: -1043617394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: ef11774838411fe4792a8a23a18f526a
     internalID: 0
     vertices: []
     indices: 
@@ -283,7 +305,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":16.0,"y":24.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       Zombie_Big_Down_Walk-Sheet8_0: 3177806693994598161
       Zombie_Big_Down_Walk-Sheet8_1: 7256762049776372414
@@ -292,6 +316,7 @@ TextureImporter:
       Zombie_Big_Down_Walk-Sheet8_4: 1714680565092366889
       Zombie_Big_Down_Walk-Sheet8_5: 6193733809724056770
       Zombie_Big_Down_Walk-Sheet8_6: -6798389041443869876
+      Zombie_Big_Down_Walk-Sheet8_7: -1043617394
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
