@@ -49,4 +49,10 @@ public class Health : MonoBehaviour
         Debug.Log("DEAD");
         Destroy(gameObject);
     }
+
+    public void SetHealth(int maxHealth, int health)
+    {
+        this.maxHealth = maxHealth;
+        this.health = health;
+    }
 }
