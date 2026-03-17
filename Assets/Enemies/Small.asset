@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9924e0da847d26489ffb890f3b86ffe, type: 3}
   m_Name: Small
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
-  health: 50
+  health: 100
+  maxHealth: 0
   damage: 1
   speed: 3
+  ExperiencePoints: 25

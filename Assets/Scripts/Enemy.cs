@@ -2,6 +2,7 @@ using System.Xml.XPath;
 using Unity.VisualScripting;
 using UnityEngine;
 using System.Collections;
+using UnityEditor.Callbacks;
 
 public class Enemy : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float speed = 1.5f;
     [SerializeField] private EnemyData data;
     [SerializeField] private int ExperiencePoints = 0;
+    public delegate void EnemyDefeated(int experience);
+    public static event EnemyDefeated OnEnemyDefeated;
+    
     private GameObject player;
     private Animator animator;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -88,6 +92,8 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
+        OnEnemyDefeated(ExperiencePoints);
+        player.GetComponent<PlayerHealth>().Heal(25);
         Destroy(gameObject);
     }
 }

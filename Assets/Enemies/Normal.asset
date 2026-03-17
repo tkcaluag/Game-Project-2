@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9924e0da847d26489ffb890f3b86ffe, type: 3}
   m_Name: Normal
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
-  health: 75
-  damage: 25
+  health: 150
+  maxHealth: 0
+  damage: 15
   speed: 1
+  ExperiencePoints: 50
