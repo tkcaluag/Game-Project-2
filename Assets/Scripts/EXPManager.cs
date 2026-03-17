@@ -8,6 +8,7 @@ public class EXPManager : MonoBehaviour
     public int currentExp;
     public int expToLevel = 10;
     public float growthMultiplier = 1.2f;
+    public GameObject Player;
     public Slider expSlider;
     public TMP_Text currentLevelText;
 
@@ -42,6 +43,8 @@ public class EXPManager : MonoBehaviour
         level++;
         currentExp -= expToLevel;
         expToLevel = Mathf.RoundToInt(expToLevel * growthMultiplier);
+
+        Player.GetComponent<PlayerHealth>().LevelUpHealth();
     }
 
     public void UpdateUI()

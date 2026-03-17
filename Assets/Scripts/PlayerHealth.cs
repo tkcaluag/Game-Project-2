@@ -1,19 +1,21 @@
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class PlayerHealth : MonoBehaviour
 {
 
     [SerializeField] private int health = 100;
+    [SerializeField] private Slider healthSlider;
+    [SerializeField] private TMP_Text currentHealth;
     private int maxHealth = 100;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        UpdateUI();
     }
-
     public void Damage(int value)
     {
         if(value < 0)
@@ -28,6 +30,8 @@ public class PlayerHealth : MonoBehaviour
         {
             Die();
         }
+
+        UpdateUI();
     }
 
     public void Heal(int value)
@@ -45,6 +49,8 @@ public class PlayerHealth : MonoBehaviour
         {
            this.health += value; 
         }
+
+        UpdateUI();
 
     }
 
@@ -75,5 +81,20 @@ public class PlayerHealth : MonoBehaviour
     {
         this.maxHealth = maxHealth;
         this.health = health;
+
+        UpdateUI();
+    }
+
+    public void LevelUpHealth()
+    {
+        maxHealth += 10;
+        UpdateUI();
+    }
+
+    public void UpdateUI()
+    {
+        healthSlider.maxValue = maxHealth;
+        healthSlider.value = health;
+        currentHealth.text = "HP: " + health + '/' + maxHealth; 
     }
 }

@@ -12,14 +12,18 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float speed = 1.5f;
     [SerializeField] private EnemyData data;
     [SerializeField] private int ExperiencePoints = 0;
+    [SerializeField] private float knockbackForce = 5f;
+    [SerializeField] private float knockbackTime = 0.2f;
     public delegate void EnemyDefeated(int experience);
     public static event EnemyDefeated OnEnemyDefeated;
-    
+    private Rigidbody2D rb;
     private GameObject player;
     private Animator animator;
+    private bool isKnockedBack = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player");
         SetEnemyValues();
@@ -33,6 +37,11 @@ public class Enemy : MonoBehaviour
 
     private void Swarm()
     {
+        if (isKnockedBack)
+        {
+            return;
+        }
+
         if(player != null){
             animator.SetBool("isWalking", true);
             transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
@@ -60,6 +69,19 @@ public class Enemy : MonoBehaviour
         GetComponent<SpriteRenderer>().color = Color.white;
     }
 
+    private IEnumerator Knockback()
+    {
+        isKnockedBack = true;
+
+        Vector2 direction = (transform.position - player.transform.position).normalized;
+        rb.linearVelocity = direction * knockbackForce;
+
+        yield return new WaitForSeconds(knockbackTime);
+
+        rb.linearVelocity = Vector2.zero;
+        isKnockedBack = false;
+    }
+
     public void Damage(int value)
     {
         if(value < 0)
@@ -69,6 +91,7 @@ public class Enemy : MonoBehaviour
 
         this.health -= value;
         StartCoroutine(VisualIndicator(Color.red));
+        StartCoroutine(Knockback());
 
         if(health <= 0)
         {
@@ -93,7 +116,7 @@ public class Enemy : MonoBehaviour
     private void Die()
     {
         OnEnemyDefeated(ExperiencePoints);
-        player.GetComponent<PlayerHealth>().Heal(25);
+        player.GetComponent<PlayerHealth>().Heal(5);
         Destroy(gameObject);
     }
 }

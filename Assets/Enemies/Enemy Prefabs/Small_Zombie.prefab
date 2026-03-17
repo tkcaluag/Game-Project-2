@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1393220975342012353}
   - component: {fileID: 3779722068143601339}
   - component: {fileID: 1794309408073116769}
+  - component: {fileID: 294102041504109788}
   m_Layer: 0
   m_Name: Small_Zombie
   m_TagString: Enemy
@@ -157,6 +158,8 @@ MonoBehaviour:
   speed: 1.5
   data: {fileID: 11400000, guid: aec10a50bcc7d7b4f8ac6113c5e10e2d, type: 2}
   ExperiencePoints: 0
+  knockbackForce: 5
+  knockbackTime: 0.2
 --- !u!95 &1794309408073116769
 Animator:
   serializedVersion: 7
@@ -179,3 +182,30 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!50 &294102041504109788
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5174599298030554305}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
