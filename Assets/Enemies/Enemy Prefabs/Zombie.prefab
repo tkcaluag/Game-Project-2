@@ -12,11 +12,10 @@ GameObject:
   - component: {fileID: 2091199003851980740}
   - component: {fileID: 4238205571009019045}
   - component: {fileID: 4598938088817507506}
-  - component: {fileID: 7211902340804967684}
   - component: {fileID: 7114307205975777499}
   m_Layer: 0
   m_Name: Zombie
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -153,22 +152,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b72a8db0493322c4ba9a625cd43f5585, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
+  health: 100
   damage: 25
   speed: 1.5
   data: {fileID: 11400000, guid: ea8344c5a3ff96f46b9d798e94728478, type: 2}
---- !u!114 &7211902340804967684
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3825215820145981112}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01d8f33767df6614fa11c095f4df3130, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Health
-  health: 100
+  ExperiencePoints: 0
 --- !u!95 &7114307205975777499
 Animator:
   serializedVersion: 7

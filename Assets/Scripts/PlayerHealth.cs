@@ -1,7 +1,8 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class Health : MonoBehaviour
+public class PlayerHealth : MonoBehaviour
 {
 
     [SerializeField] private int health = 100;
@@ -56,8 +57,18 @@ public class Health : MonoBehaviour
 
     private void Die()
     {
-        Debug.Log("DEAD");
         Destroy(gameObject);
+    }
+
+    public bool isDead()
+    {
+        if(health <= 0)
+        {
+            return true;
+        } else
+        {
+            return false;
+        }
     }
 
     public void SetHealth(int maxHealth, int health)

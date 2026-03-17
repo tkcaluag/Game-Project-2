@@ -12,11 +12,10 @@ GameObject:
   - component: {fileID: 6819380240346644451}
   - component: {fileID: 1393220975342012353}
   - component: {fileID: 3779722068143601339}
-  - component: {fileID: 5419222849540483216}
   - component: {fileID: 1794309408073116769}
   m_Layer: 0
   m_Name: Small_Zombie
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -153,22 +152,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b72a8db0493322c4ba9a625cd43f5585, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
+  health: 100
   damage: 5
   speed: 1.5
   data: {fileID: 11400000, guid: aec10a50bcc7d7b4f8ac6113c5e10e2d, type: 2}
---- !u!114 &5419222849540483216
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5174599298030554305}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01d8f33767df6614fa11c095f4df3130, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Health
-  health: 100
+  ExperiencePoints: 0
 --- !u!95 &1794309408073116769
 Animator:
   serializedVersion: 7

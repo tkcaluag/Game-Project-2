@@ -1,12 +1,16 @@
+using System.Xml.XPath;
 using Unity.VisualScripting;
 using UnityEngine;
+using System.Collections;
 
 public class Enemy : MonoBehaviour
 {
-
+    [SerializeField] private int health = 100;
+    private int maxHealth = 100;
     [SerializeField] private int damage = 5;
     [SerializeField] private float speed = 1.5f;
     [SerializeField] private EnemyData data;
+    [SerializeField] private int ExperiencePoints = 0;
     private GameObject player;
     private Animator animator;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -14,7 +18,7 @@ public class Enemy : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player");
-        SetEnemeyValues();
+        SetEnemyValues();
     }
 
     // Update is called once per frame
@@ -38,17 +42,52 @@ public class Enemy : MonoBehaviour
     {
         if (collider.CompareTag("Player"))
         {
-            if(collider.GetComponent<Health>() != null)
+            if(collider.GetComponent<PlayerHealth>() != null)
             {
-                collider.GetComponent<Health>().Damage(damage);
+                collider.GetComponent<PlayerHealth>().Damage(damage);
             }
         }
     }
 
-    private void SetEnemeyValues()
+    private IEnumerator VisualIndicator(Color color)
     {
-        GetComponent<Health>().SetHealth(data.health, data.health);
+        GetComponent<SpriteRenderer>().color = color;
+        yield return new WaitForSeconds(0.15f);
+        GetComponent<SpriteRenderer>().color = Color.white;
+    }
+
+    public void Damage(int value)
+    {
+        if(value < 0)
+        {
+            throw new System.ArgumentOutOfRangeException("Cannot have negative damage");
+        }
+
+        this.health -= value;
+        StartCoroutine(VisualIndicator(Color.red));
+
+        if(health <= 0)
+        {
+            Die();
+        }
+    }
+
+    public int GetExperiencePoints()
+    {
+        return ExperiencePoints;
+    }
+
+    private void SetEnemyValues()
+    {
+        health = data.health;
+        maxHealth = data.maxHealth;
         damage = data.damage;
         speed = data.speed;
+        ExperiencePoints = data.ExperiencePoints;
+    }
+
+    private void Die()
+    {
+        Destroy(gameObject);
     }
 }

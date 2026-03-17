@@ -22,7 +22,6 @@ public class PlayerAttack : MonoBehaviour
     {
         if (attacking)
         {
-            Debug.Log("Attack Start");
             timer  += Time.deltaTime;
             if(timer >= timeToAttack)
             {
@@ -30,7 +29,6 @@ public class PlayerAttack : MonoBehaviour
                 attacking = false;
                 animator.SetBool("isAttacking", false);
                 attackArea.SetActive(attacking);
-                Debug.Log("Attack End");
             }
         }
     }

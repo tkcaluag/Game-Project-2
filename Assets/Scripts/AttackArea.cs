@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class AttackArea : MonoBehaviour
@@ -18,10 +19,11 @@ public class AttackArea : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if(collider.GetComponent<Health>() != null)
+        if(collider.GetComponent<Enemy>() != null)
         {
-            Health health = collider.GetComponentInParent<Health>();
-            health.Damage(damage);
+            Enemy enemy_health = collider.GetComponentInParent<Enemy>();
+            enemy_health.Damage(damage);
+
         }
     }
 }
