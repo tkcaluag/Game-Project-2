@@ -8,6 +8,7 @@ public class PlayerAttack : MonoBehaviour
     private float timeToAttack = 0.25f;
     private float timer = 0;
     private Vector2 moveInput;
+    public AudioSource src;
 
     private Animator animator;
 

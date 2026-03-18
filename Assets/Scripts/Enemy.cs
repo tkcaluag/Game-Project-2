@@ -20,6 +20,7 @@ public class Enemy : MonoBehaviour
     private GameObject player;
     private Animator animator;
     private bool isKnockedBack = false;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -32,7 +33,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Swarm();
+            Swarm();
     }
 
     private void Swarm()

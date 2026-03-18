@@ -5,6 +5,9 @@ public class AttackArea : MonoBehaviour
 {
 
     [SerializeField] private int damage = 3;
+    public AudioSource src;
+    [SerializeField] private AudioClip soundEffect;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -30,6 +33,9 @@ public class AttackArea : MonoBehaviour
         {
             Enemy enemy_health = collider.GetComponentInParent<Enemy>();
             enemy_health.Damage(damage);
+
+            src.clip = soundEffect;
+            src.Play();
 
         }
     }

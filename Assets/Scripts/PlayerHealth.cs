@@ -10,6 +10,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private int health = 100;
     [SerializeField] private Slider healthSlider;
     [SerializeField] private TMP_Text currentHealth;
+    [SerializeField] private GameObject gameOver;
     private int maxHealth = 100;
 
     private void Start()
@@ -70,7 +71,15 @@ public class PlayerHealth : MonoBehaviour
 
     private void Die()
     {
+        gameOver.SetActive(true);
         Destroy(gameObject);
+
+        PlayerPrefs.DeleteKey("MaxHealth");
+        PlayerPrefs.DeleteKey("CurrentHealth");
+        PlayerPrefs.DeleteKey("Level");
+        PlayerPrefs.DeleteKey("ExperiencePoints");
+        PlayerPrefs.DeleteKey("expToLevel");
+        PlayerPrefs.DeleteKey("Damage");
     }
 
     public bool isDead()
