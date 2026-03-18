@@ -36,9 +36,12 @@ public class PlayerAttack : MonoBehaviour
 
     public void Attack()
     {
-        attacking = true;
-        animator.SetBool("isAttacking", true);
+        if(Time.timeScale != 0){
+            attacking = true;
+            animator.SetBool("isAttacking", true);
+        
 
-        attackArea.SetActive(attacking);
+            attackArea.SetActive(attacking);
+        }
     }
 }

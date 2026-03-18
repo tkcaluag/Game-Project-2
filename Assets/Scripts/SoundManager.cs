@@ -6,8 +6,10 @@ using System;
 
 public class SoundManager : MonoBehaviour
 {
-    [SerializeField] Slider volumeSlider;
-    [SerializeField] AudioMixer mixer;
+    [SerializeField] Slider musicSlider;
+    [SerializeField] Slider SFXSlider;
+    [SerializeField] AudioMixer musicMixer;
+    [SerializeField] AudioMixer SFXMixer;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -16,25 +18,52 @@ public class SoundManager : MonoBehaviour
             PlayerPrefs.SetFloat("musicVolume", 1);
         } else
         {
-            Load();
+            LoadMusicVol();
+        }
+
+        if (!PlayerPrefs.HasKey("SFXVolume"))
+        {
+            PlayerPrefs.SetFloat("SFXVolume", 1);
+        } else
+        {
+            LoadSFXVol();
         }
     }
 
-    public void changeVolume()
+    public void changeMusicVolume()
     {
-        float musicVolume = volumeSlider.value;
-        mixer.SetFloat("Music", Mathf.Log10(musicVolume)*20);
-        Save();
+        float musicVolume = musicSlider.value;
+        musicMixer.SetFloat("Music", Mathf.Log10(musicVolume)*20);
+        SaveMusicVol();
     }
 
-    private void Load()
+    public void changeSFXVolume()
     {
-        volumeSlider.value = PlayerPrefs.GetFloat("musicVolume");
+        float SFXVolume = SFXSlider.value;
+        SFXMixer.SetFloat("SFX", MathF.Log10(SFXVolume)*20);
+        SaveSFXVol();
     }
 
-    private void Save()
+    private void LoadMusicVol()
     {
-        PlayerPrefs.SetFloat("musicVolume", volumeSlider.value);
+        musicSlider.value = PlayerPrefs.GetFloat("musicVolume");
+        musicMixer.SetFloat("Music", Mathf.Log10(PlayerPrefs.GetFloat("musicVolume"))*20);
+    }
+
+    private void SaveMusicVol()
+    {
+        PlayerPrefs.SetFloat("musicVolume", musicSlider.value);
+    }
+
+    private void LoadSFXVol()
+    {
+        SFXSlider.value = PlayerPrefs.GetFloat("SFXVolume");
+        SFXMixer.SetFloat("SFX", Mathf.Log10(PlayerPrefs.GetFloat("SFXVolume"))*20);
+    }
+
+    private void SaveSFXVol()
+    {
+        PlayerPrefs.SetFloat("SFXVolume", SFXSlider.value);
     }
 
 }
