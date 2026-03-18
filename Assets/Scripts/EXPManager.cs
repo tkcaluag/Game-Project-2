@@ -11,9 +11,21 @@ public class EXPManager : MonoBehaviour
     public GameObject Player;
     public Slider expSlider;
     public TMP_Text currentLevelText;
+    public GameObject Attack;
 
     private void Start()
     {
+
+        if (!PlayerPrefs.HasKey("Level") && !PlayerPrefs.HasKey("ExperiencePoints") && !PlayerPrefs.HasKey("expToLevel"))
+        {
+            PlayerPrefs.SetInt("Level", 0);
+            PlayerPrefs.SetInt("ExperiencePoints", 0);
+            PlayerPrefs.SetInt("expToLevel", 10);
+        } else
+        {
+            LoadLevel();
+        }
+
         UpdateUI();
     }
 
@@ -45,6 +57,8 @@ public class EXPManager : MonoBehaviour
         expToLevel = Mathf.RoundToInt(expToLevel * growthMultiplier);
 
         Player.GetComponent<PlayerHealth>().LevelUpHealth();
+        Attack.GetComponent<AttackArea>().LevelUpAttack();
+        SaveLevel();
     }
 
     public void UpdateUI()
@@ -52,6 +66,25 @@ public class EXPManager : MonoBehaviour
         expSlider.maxValue = expToLevel;
         expSlider.value = currentExp;
         currentLevelText.text = "Level: " + level; 
+    }
+
+    public void SaveLevel()
+    {
+        PlayerPrefs.SetInt("Level", level);
+        PlayerPrefs.SetInt("ExperiencePoints", currentExp);
+        PlayerPrefs.SetInt("expToLevel", expToLevel);
+
+        Debug.Log("Saved!");
+    }
+
+    public void LoadLevel()
+    {
+        level = PlayerPrefs.GetInt("Level");
+        currentExp = PlayerPrefs.GetInt("ExperiencePoints");
+        expToLevel = PlayerPrefs.GetInt("expToLevel");
+
+        Debug.Log("Loaded!");
+        Debug.Log("Level: " + level + " Current EXP: " + currentExp + " ExpToLevel: " + expToLevel);
     }
 
 }

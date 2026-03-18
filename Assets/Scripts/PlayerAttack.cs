@@ -39,8 +39,5 @@ public class PlayerAttack : MonoBehaviour
         animator.SetBool("isAttacking", true);
 
         attackArea.SetActive(attacking);
-
-        
-
     }
 }

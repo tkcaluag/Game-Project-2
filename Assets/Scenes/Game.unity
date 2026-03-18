@@ -2422,6 +2422,7 @@ MonoBehaviour:
   Player: {fileID: 514961013}
   expSlider: {fileID: 543883179}
   currentLevelText: {fileID: 443088258}
+  Attack: {fileID: 1565360392}
 --- !u!114 &1350353675
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -14,4 +14,9 @@ public class NewMonoBehaviourScript : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void DeleteAllData()
+    {
+        PlayerPrefs.DeleteAll();
+    }
 }

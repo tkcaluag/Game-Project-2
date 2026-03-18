@@ -14,6 +14,13 @@ public class PlayerHealth : MonoBehaviour
 
     private void Start()
     {
+        if (!PlayerPrefs.HasKey("MaxHealth") && !PlayerPrefs.HasKey("CurrentHealth"))
+        {
+            PlayerPrefs.SetInt("MaxHealth", 100);
+            PlayerPrefs.SetInt("CurrentHealth", 100);
+        }
+        
+        LoadHealth();
         UpdateUI();
     }
     public void Damage(int value)
@@ -88,6 +95,7 @@ public class PlayerHealth : MonoBehaviour
     public void LevelUpHealth()
     {
         maxHealth += 10;
+        SaveHealth();
         UpdateUI();
     }
 
@@ -96,5 +104,17 @@ public class PlayerHealth : MonoBehaviour
         healthSlider.maxValue = maxHealth;
         healthSlider.value = health;
         currentHealth.text = "HP: " + health + '/' + maxHealth; 
+    }
+
+    public void SaveHealth()
+    {
+        PlayerPrefs.SetInt("MaxHealth", maxHealth);
+        PlayerPrefs.SetInt("CurrentHealth", health);
+    }
+
+    public void LoadHealth()
+    {
+        maxHealth = PlayerPrefs.GetInt("MaxHealth");
+        health = PlayerPrefs.GetInt("CurrentHealth");
     }
 }
