@@ -42,7 +42,7 @@ public class AttackArea : MonoBehaviour
 
     public void LevelUpAttack()
     {
-        damage += 5;
+        damage += 25;
         SaveDamage();
     }
 

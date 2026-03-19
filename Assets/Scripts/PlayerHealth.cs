@@ -103,7 +103,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void LevelUpHealth()
     {
-        maxHealth += 10;
+        maxHealth += 25;
         SaveHealth();
         UpdateUI();
     }

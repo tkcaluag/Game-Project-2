@@ -12,6 +12,7 @@ public class EXPManager : MonoBehaviour
     public Slider expSlider;
     public TMP_Text currentLevelText;
     public GameObject Attack;
+    public GameObject UpgradeScreen;
 
     private void Start()
     {
@@ -56,8 +57,12 @@ public class EXPManager : MonoBehaviour
         currentExp -= expToLevel;
         expToLevel = Mathf.RoundToInt(expToLevel * growthMultiplier);
 
-        Player.GetComponent<PlayerHealth>().LevelUpHealth();
-        Attack.GetComponent<AttackArea>().LevelUpAttack();
+        if(level%5 == 0)
+        {
+            Time.timeScale = 0;
+            UpgradeScreen.SetActive(true);
+        }
+        
         SaveLevel();
     }
 
