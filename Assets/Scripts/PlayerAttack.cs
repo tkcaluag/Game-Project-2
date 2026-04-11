@@ -1,10 +1,16 @@
+using NUnit.Framework;
+using TMPro;
+using Unity.VisualScripting;
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerAttack : MonoBehaviour
 {
     [SerializeField] GameObject attackArea;
+    [SerializeField] GameObject buffedAttackArea;
     private bool attacking = false;
+    private bool hasAttackAreaBuff = false;
     private float timeToAttack = 0.25f;
     private float timer = 0;
     private Vector2 moveInput;
@@ -40,8 +46,17 @@ public class PlayerAttack : MonoBehaviour
             attacking = true;
             animator.SetBool("isAttacking", true);
         
-
-            attackArea.SetActive(attacking);
+            if(!hasAttackAreaBuff){
+                attackArea.SetActive(attacking);
+            } else
+            {
+                buffedAttackArea.SetActive(attacking);
+            }
         }
+    }
+
+    public void getAttackAreaBuff()
+    {
+        hasAttackAreaBuff = true;
     }
 }
