@@ -3,6 +3,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.InputSystem;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -10,8 +11,13 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private int health = 100;
     [SerializeField] private Slider healthSlider;
     [SerializeField] private TMP_Text currentHealth;
+    [SerializeField] private float regenThreshold = 0.35f;
+    [SerializeField] private float regenRate = 5f;
+    [SerializeField] private float regenDelay = 2f;
     [SerializeField] private GameObject gameOver;
     private int maxHealth = 100;
+    private bool thornsPerk = false;
+    private Coroutine regenCoroutine;
 
     private void Start()
     {
@@ -37,6 +43,16 @@ public class PlayerHealth : MonoBehaviour
         if(health <= 0)
         {
             Die();
+        }
+
+        if((float)health / maxHealth <= regenThreshold)
+        {
+            if(regenCoroutine != null)
+            {
+                StopCoroutine(regenCoroutine);
+            }
+
+            regenCoroutine = StartCoroutine(RegenerateHealth());
         }
 
         UpdateUI();
@@ -67,6 +83,24 @@ public class PlayerHealth : MonoBehaviour
         GetComponent<SpriteRenderer>().color = color;
         yield return new WaitForSeconds(0.15f);
         GetComponent<SpriteRenderer>().color = Color.white;
+    }
+
+    private IEnumerator RegenerateHealth()
+    {
+        yield return new WaitForSeconds(regenDelay);
+
+        while (health < maxHealth)
+        {
+            health += (int)regenRate;
+
+            if(health > maxHealth)
+            {
+                health = maxHealth;
+            }
+
+            UpdateUI();
+            yield return new WaitForSeconds(1f);
+        }
     }
 
     private void Die()
@@ -126,4 +160,19 @@ public class PlayerHealth : MonoBehaviour
         maxHealth = PlayerPrefs.GetInt("MaxHealth");
         health = PlayerPrefs.GetInt("CurrentHealth");
     }
+
+    public void GlassHealth()
+    {
+        maxHealth = maxHealth / 2;
+        health = health / 2;
+        UpdateUI();
+    }
+
+    public bool Thorns()
+    {
+        thornsPerk = true;
+        return thornsPerk;
+    }
+
+
 }

@@ -46,6 +46,11 @@ public class AttackArea : MonoBehaviour
         SaveDamage();
     }
 
+    public void GlassAttack()
+    {
+        damage = damage * 2;
+    }
+
     public void SaveDamage()
     {
         PlayerPrefs.SetInt("Damage", damage);

@@ -58,6 +58,11 @@ public class Enemy : MonoBehaviour
             if(collider.GetComponent<PlayerHealth>() != null)
             {
                 collider.GetComponent<PlayerHealth>().Damage(damage);
+
+                if (collider.GetComponent<PlayerHealth>().Thorns())
+                {
+                    Damage(damage/2);
+                }
             }
         }
     }
