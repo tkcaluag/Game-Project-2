@@ -13,6 +13,7 @@ public class EXPManager : MonoBehaviour
     public TMP_Text currentLevelText;
     public GameObject Attack;
     public GameObject UpgradeScreen;
+    public GameObject Chest;
 
     private void Start()
     {
@@ -61,6 +62,11 @@ public class EXPManager : MonoBehaviour
         {
             Time.timeScale = 0;
             UpgradeScreen.SetActive(true);
+        }
+
+        if(level%10 == 0)
+        {
+            Chest.transform.position = Vector2.zero;
         }
         
         SaveLevel();

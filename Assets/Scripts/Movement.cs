@@ -12,7 +12,7 @@ public class Movement : MonoBehaviour
     public float dashDuration = 0.2f;
     public float dashCooldown = 1f;
     private bool isDashing = false;
-    private bool hasDashPerk = false;
+    private bool hasNinjaPerk = false;
     private float dashTime;
     private float dashCooldownTimer;
     private Rigidbody2D rb;
@@ -37,7 +37,7 @@ public class Movement : MonoBehaviour
             rb.linearVelocity = dashDirection * dashSpeed;
             dashTime -= Time.deltaTime;
 
-            if(!hasDashPerk){
+            if(!hasNinjaPerk){
                 GetComponent<Collider2D>().enabled = false;
             }
 
@@ -95,11 +95,18 @@ public class Movement : MonoBehaviour
         }
     }
 
-    public void dashPerk()
+    public void ninjaPerk()
     {
         // Reduce dash cooldown significantly but remove invulnerability
-        hasDashPerk = true;
-        dashCooldown = 0.5f;
+        if (!hasNinjaPerk)
+        {
+            hasNinjaPerk = true;
+            dashCooldown = 0.5f;
+        }
+    }
 
+    public void brutePerk()
+    {
+        movementSpeed = movementSpeed / 2;
     }
 }

@@ -61,4 +61,10 @@ public class AttackArea : MonoBehaviour
     {
         damage = PlayerPrefs.GetInt("Damage");
     }
+
+    public void BruteAttack()
+    {
+        damage = Mathf.RoundToInt(damage * 1.5f);
+        SaveDamage();
+    }
 }
