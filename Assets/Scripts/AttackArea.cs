@@ -49,6 +49,7 @@ public class AttackArea : MonoBehaviour
     public void GlassAttack()
     {
         damage = damage * 2;
+        SaveDamage();
     }
 
     public void SaveDamage()

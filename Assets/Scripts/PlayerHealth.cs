@@ -165,12 +165,18 @@ public class PlayerHealth : MonoBehaviour
     {
         maxHealth = maxHealth / 2;
         health = health / 2;
+        SaveHealth();
         UpdateUI();
     }
 
     public bool Thorns()
     {
         thornsPerk = true;
+        return thornsPerk;
+    }
+
+    public bool hasThorns()
+    {
         return thornsPerk;
     }
 

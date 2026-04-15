@@ -59,7 +59,7 @@ public class Enemy : MonoBehaviour
             {
                 collider.GetComponent<PlayerHealth>().Damage(damage);
 
-                if (collider.GetComponent<PlayerHealth>().Thorns())
+                if (collider.GetComponent<PlayerHealth>().hasThorns())
                 {
                     Damage(damage/2);
                 }

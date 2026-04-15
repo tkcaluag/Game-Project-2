@@ -22,17 +22,26 @@ public class Chest : MonoBehaviour
 
      private void OnTriggerEnter2D(Collider2D collider)
     {
-        if(perksList.Count == 0)
+        if (collider.CompareTag("Player"))
         {
-            Debug.Log("No perks left!");
-            return;
+            if(perksList.Count == 0)
+            {
+                Debug.Log("No perks left!");
+                return;
+            }
+
+            int randomIndex = Random.Range(0, perksList.Count);
+            string selectedPerk = perksList[randomIndex];
+
+            perksList.RemoveAt(randomIndex);
+
+            if(selectedPerk == "GlassCannon")
+            {
+                collider.GetComponent<PlayerHealth>().GlassHealth();
+                collider.GetComponentInParent<AttackArea>().GlassAttack();
+            }
+
+            Debug.Log("Selected perk: " + selectedPerk);
         }
-
-        int randomIndex = Random.Range(0, perksList.Count);
-        string selectedPerk = perksList[randomIndex];
-
-        perksList.RemoveAt(randomIndex);
-
-        Debug.Log("Selected perk: " + selectedPerk);
     }
 }
