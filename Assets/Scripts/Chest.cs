@@ -9,12 +9,13 @@ public class Chest : MonoBehaviour
 {
 
     [SerializeField] private TMP_Text GetPerkText;
+    [SerializeField] private TMP_Text Explanation;
     [SerializeField] private TMP_Text PerkUI;
     [SerializeField] private GameObject ChestObject;
     [SerializeField] private Vector2 hiddenPosition;
     private List<string> availablePerksList = new List<string>
     {
-        "GlassCannon", "Thorns", "Ninja", "Brute"
+        "Thorns", "Ninja", "Brute"
     };
 
     private List<string> playerPerksList = new List<string>{};
@@ -52,7 +53,7 @@ public class Chest : MonoBehaviour
             if(selectedPerk == "GlassCannon")
             {
                 collider.GetComponent<PlayerHealth>().GlassHealth();
-                collider.GetComponentInChildren<AttackArea>().GlassAttack();
+                collider.GetComponentInChildren<AttackArea>(true).GlassAttack();
             }
 
             else if (selectedPerk == "Thorns")
@@ -67,7 +68,7 @@ public class Chest : MonoBehaviour
 
             else if (selectedPerk == "Brute")
             {
-                collider.GetComponentInChildren<AttackArea>().BruteAttack();
+                collider.GetComponentInChildren<AttackArea>(true).BruteAttack();
                 collider.GetComponent<Movement>().brutePerk();
             }
 
@@ -144,9 +145,32 @@ public class Chest : MonoBehaviour
     private IEnumerator ShowPerkNotification(string perkName)
     {
         GetPerkText.text = "You obtained: " + perkName + "!";
+
+        if(perkName == "Thorns")
+        {
+            Explanation.text = " Enemies are damaged when they damage you";
+        }
+
+        else if(perkName == "Ninja")
+        {
+            Explanation.text = "Dash cooldown is significantly decreased but no longer provides invulnerability";
+        }
+
+        else if(perkName == "Brute")
+        {
+            Explanation.text = "Incrased attack damage but half your movement speed";
+        }
+
+        else if(perkName == "GlassCannon")
+        {
+            Explanation.text = "Significant increase in attack damage but significant decrease in health";
+        }
+
         GetPerkText.gameObject.SetActive(true);
+        Explanation.gameObject.SetActive(true);
         yield return new WaitForSeconds(3f);
         GetPerkText.gameObject.SetActive(false);
+        Explanation.gameObject.SetActive(false);
     }
 
     public void SendChestOut()

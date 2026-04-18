@@ -108,12 +108,7 @@ public class PlayerHealth : MonoBehaviour
         gameOver.SetActive(true);
         Destroy(gameObject);
 
-        PlayerPrefs.DeleteKey("MaxHealth");
-        PlayerPrefs.DeleteKey("CurrentHealth");
-        PlayerPrefs.DeleteKey("Level");
-        PlayerPrefs.DeleteKey("ExperiencePoints");
-        PlayerPrefs.DeleteKey("expToLevel");
-        PlayerPrefs.DeleteKey("Damage");
+        PlayerPrefs.DeleteAll();
     }
 
     public bool isDead()

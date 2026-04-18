@@ -19,6 +19,7 @@ public class Enemy : MonoBehaviour
     private GameObject player;
     private Animator animator;
     private bool isKnockedBack = false;
+    private bool isDead = false;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -32,7 +33,10 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!isDead)
+        {
             Swarm();
+        }
     }
 
     private void Swarm()
@@ -55,7 +59,7 @@ public class Enemy : MonoBehaviour
     {
         if (collider.CompareTag("Player"))
         {
-            if(collider.GetComponent<PlayerHealth>() != null)
+            if(collider.GetComponent<PlayerHealth>() != null && !isDead)
             {
                 collider.GetComponent<PlayerHealth>().Damage(damage);
 
@@ -98,9 +102,11 @@ public class Enemy : MonoBehaviour
         StartCoroutine(VisualIndicator(Color.red));
         StartCoroutine(Knockback());
 
-        if(health <= 0)
+        if(health <= 0 && !isDead)
         {
-            Die();
+            isDead = true;
+            animator.SetBool("isDead", true);
+            StartCoroutine(Die());
         }
     }
 
@@ -118,10 +124,11 @@ public class Enemy : MonoBehaviour
         ExperiencePoints = data.ExperiencePoints;
     }
 
-    private void Die()
+    private IEnumerator Die()
     {
         OnEnemyDefeated(ExperiencePoints);
         player.GetComponent<PlayerHealth>().Heal(5);
+        yield return new WaitForSeconds(0.75f);
         Destroy(gameObject);
     }
 }
